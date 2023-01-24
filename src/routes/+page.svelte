@@ -17,9 +17,10 @@
     {
       name: 'Osu!',
       url: 'https://osu.ppy.sh/users/6114695',
-      class: 'fa-solid fa-circle fa-xl',
+      class: 'w-[24px] m-auto',
       color: '#ff69b4',
-      tooltip: 'ciru'
+      tooltip: 'ciru',
+      path: '/osulogo.png'
     },
     {
       name: 'Twitch',
@@ -42,6 +43,7 @@
   <section class="flex flex-col justify-center items-center min-w-full">
     <img src="https://a.ppy.sh/6114695" class="rounded-full w-48 h-48" alt="pfp" />
     <h1 class="text-8xl">ciru</h1>
+    <h2 class="text-xs">top 20 osu player.</h2>
   </section>
   <div class="divider divider-vertical text-xs">Links.</div>
   <section class="flex justify-center w-2/5">
@@ -53,6 +55,10 @@
       {:else if links.indexOf(link) == links.length - 1}
         <a href={link.url} class="tooltip tooltip-bottom rounded-r-full p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
           <i class={link.class} />
+        </a>
+      {:else if links.indexOf(link) == 2}
+        <a href={link.url} class="tooltip tooltip-bottom p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
+          <img src={link.path} class={link.class}>
         </a>
       {:else}
         <a href={link.url} class="tooltip tooltip-bottom p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
