@@ -17,7 +17,7 @@
     {
       name: 'Osu!',
       url: 'https://osu.ppy.sh/users/6114695',
-      class: 'w-[24px] m-auto',
+      class: 'w-[24px] m-auto min-w-[24px]',
       color: '#ff69b4',
       tooltip: 'ciru',
       path: '/osulogo.png'
@@ -37,6 +37,18 @@
       tooltip: '@ciru.'
     }
   ]
+
+  const handleClick = () => {
+    const textarea = document.createElement('textarea');
+    textarea.value = links[0].tooltip;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
+
+    document.querySelector('#discord')?.classList.add('tooltip', 'tooltip-top')
+    document.querySelector('#discord')?.setAttribute('data-tip', 'copied to clipboard!')
+  }
 </script>
 
 <div class="flex flex-col justify-center items-center h-[100vh] w-[100vw] bg-[#111111] text-white">
@@ -49,16 +61,20 @@
   <section class="flex justify-center w-2/5">
     {#each links as link}
       {#if links.indexOf(link) == 0}
-        <a href={link.url} class="tooltip tooltip-bottom rounded-l-full p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
+        <button id="discord" on:click={() => {handleClick()}} class="tooltip tooltip-bottom rounded-l-full p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
           <i class={link.class} />
-        </a>
+        </button>
       {:else if links.indexOf(link) == links.length - 1}
         <a href={link.url} class="tooltip tooltip-bottom rounded-r-full p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
           <i class={link.class} />
         </a>
+      {:else if links.indexOf(link) == links.length - 1}
+      <a href={link.url} class="tooltip tooltip-bottom rounded-r-full p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
+        <i class={link.class} />
+      </a>
       {:else if links.indexOf(link) == 2}
         <a href={link.url} class="tooltip tooltip-bottom p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
-          <img src={link.path} class={link.class}>
+          <img src={link.path} class={link.class} alt="osu-logo">
         </a>
       {:else}
         <a href={link.url} class="tooltip tooltip-bottom p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
