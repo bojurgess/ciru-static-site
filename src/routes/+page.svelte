@@ -1,86 +1,116 @@
-<script>
-  const links = [
-    {
-      name: 'Discord',
-      url: 'https://discord.com/users/aidan#6543',
-      class: 'fa-brands fa-discord fa-xl',
-      color: '#7289da',
-      tooltip: 'aidan#6543'
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/ciru_osu',
-      class: 'fa-brands fa-twitter fa-xl',
-      color: '#1da1f2',
-      tooltip: '@ciru_osu'
-    },
-    {
-      name: 'Osu!',
-      url: 'https://osu.ppy.sh/users/6114695',
-      class: 'w-[24px] m-auto min-w-[24px]',
-      color: '#ff69b4',
-      tooltip: 'ciru',
-      path: '/osulogo.png'
-    },
+<svelte:head>
+	<title>Gabey</title>
+</svelte:head>
+
+<script lang="ts">
+	interface Links {
+		name: string;
+		url?: string;
+		class: string;
+		tooltip?: string;
+		color: string;
+	}
+
+	const fa = 'fa-xl';
+	const linksClass = 'h-12 w-12 tooltip tooltip-bottom p-4 w-full flex items-center justify-center rounded-2xl m-1 shadow-2xl';
+	const links: Links[] = [
+		{
+			name: 'Osu',
+			tooltip: 'ciru',
+			url: 'https://osu.ppy.sh/users/12904237',
+			class: 'fa-solid fa-circle',
+      color: '#ff66aa'
+		},
+		{
+			name: 'Discord',
+			tooltip: 'ciru#0001',
+			class: 'fa-brands fa-discord',
+			color: '#7289da'
+		},
+		{
+			name: 'Twitter',
+			tooltip: '@ciru_osu',
+			url: 'https://twitter.com/ciru_osu',
+			class: 'fa-brands fa-twitter',
+			color: '#1da1f2'
+		},
     {
       name: 'Twitch',
-      url: 'https://www.twitch.tv/ciruos',
-      class: 'fa-brands fa-twitch fa-xl',
-      color: '#9146ff',
-      tooltip: '/ciruos'
+      tooltip: 'ciruos',
+      url: 'https://twitch.tv/ciruos',
+      class: 'fa-brands fa-twitch',
+      color: '#9146ff'
     },
     {
       name: 'Youtube',
+      tooltip: '/@ciru.',
       url: 'https://www.youtube.com/@ciru.',
-      class: 'fa-brands fa-youtube fa-xl',
-      color: '#ff0000',
-      tooltip: '@ciru.'
-    }
-  ]
+      class: 'fa-brands fa-youtube',
+      color: '#ff0000'
+    },
+	];
 
-  const handleClick = () => {
-    const textarea = document.createElement('textarea');
-    textarea.value = links[0].tooltip;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    textarea.remove();
+	const handleClick = () => {
+		const textarea: any = document.createElement('textarea');
+		textarea.value = links[1].tooltip;
+		document.body.appendChild(textarea);
+		textarea.select();
+		document.execCommand('copy');
+		textarea.remove();
 
-    document.querySelector('#discord')?.classList.add('tooltip', 'tooltip-top')
-    document.querySelector('#discord')?.setAttribute('data-tip', 'copied to clipboard!')
-  }
+		const tooltip: any = document.querySelector('#discord');
+		tooltip.setAttribute('data-tip', 'Copied to clipboard!');
+		setTimeout(() => {
+			tooltip.setAttribute('data-tip', links[1].tooltip);
+		}, 1000);
+	};
 </script>
 
-<div class="flex flex-col justify-center items-center h-[100vh] w-[100vw] bg-[#111111] text-white">
-  <section class="flex flex-col justify-center items-center min-w-full">
-    <img src="https://a.ppy.sh/6114695" class="rounded-full w-48 h-48" alt="pfp" />
-    <h1 class="text-8xl">ciru</h1>
-    <h2 class="text-xs">top 20 osu player.</h2>
-  </section>
-  <div class="divider divider-vertical text-xs">Links.</div>
-  <section class="flex justify-center w-2/5">
-    {#each links as link}
-      {#if links.indexOf(link) == 0}
-        <button id="discord" on:click={() => {handleClick()}} class="tooltip tooltip-bottom rounded-l-full p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
-          <i class={link.class} />
-        </button>
-      {:else if links.indexOf(link) == links.length - 1}
-        <a href={link.url} class="tooltip tooltip-bottom rounded-r-full p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
-          <i class={link.class} />
-        </a>
-      {:else if links.indexOf(link) == links.length - 1}
-      <a href={link.url} class="tooltip tooltip-bottom rounded-r-full p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
-        <i class={link.class} />
-      </a>
-      {:else if links.indexOf(link) == 2}
-        <a href={link.url} class="tooltip tooltip-bottom p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
-          <img src={link.path} class={link.class} alt="osu-logo">
-        </a>
-      {:else}
-        <a href={link.url} class="tooltip tooltip-bottom p-4 w-full" data-tip={link.tooltip} style="background-color: {link.color};">
-          <i class={link.class} />
-        </a>
-      {/if}
-    {/each}
-  </section>
+<div class="flex flex-col sm:flex-row justify-center items-center text-white min-w-[300px]">
+  <img src="https://a.ppy.sh/6114695" class="rounded-full w-48 sm:mr-4 shadow-2xl" alt="profile-pic" />
+  <span class="flex flex-col w-full">
+    <section class="ml-auto mr-auto text-center sm:text-start sm:ml-4 mb-1">
+      <h1 class="text-5xl font-bold shadow-text">ciru</h1>
+      <h2 class="sm:truncate shadow-text">top 20 osu player.</h2>
+    </section>
+    <section class="flex justify-center min-w-[300px] w-full max-w-[600px]">
+      {#each links as link}
+        {#if link.name === 'Discord'}
+          <button
+            id="discord"
+            on:click={handleClick}
+            class={linksClass}
+            data-tip={link.tooltip}
+            style="background-color: {link.color};"
+          >
+            <i class="{link.class} {fa}" />
+          </button>
+        {:else if link.name === 'Osu'}
+          <a
+            href={link.url}
+            class='{linksClass}'
+            data-tip={link.tooltip}
+            style="background-color: {link.color};"
+          >
+            <img src='/osulogo.png' class="max-w-[32px]" alt="osu-logo">
+          </a>
+        {:else}
+          <a
+            href={link.url}
+            class='{linksClass}'
+            data-tip={link.tooltip}
+            style="background-color: {link.color};"
+          >
+            <i class="{link.class} {fa}" />
+          </a>
+        {/if}
+      {/each}
+    </section>
+  </span>
 </div>
+
+<style>
+  .shadow-text {
+    text-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+  }
+</style>
