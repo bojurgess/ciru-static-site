@@ -66,7 +66,7 @@
 	};
 </script>
 
-<div class="flex flex-col sm:flex-row justify-center items-center text-white min-w-[300px]">
+<div class="flex flex-col sm:flex-row justify-center items-center text-white z-0">
   <img src="https://a.ppy.sh/6114695" class="rounded-full w-48 sm:mr-4 shadow-2xl" alt="profile-pic" />
   <span class="flex flex-col w-full">
     <section class="ml-auto mr-auto text-center sm:text-start sm:ml-4 mb-1">

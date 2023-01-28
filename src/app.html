@@ -18,28 +18,9 @@
 		justify-content: center;
 		height: 100vh;
 		width: 100%;
-	}
-
-	@keyframes move {
-		0% {
-			transform: scale(3.5) translate(0, 0);
-		}
-		100% {
-			transform: scale(3.5) translate(40px, -40px);
-		}
-	}
-
-	body:before {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
 		background-color: #f69ce3;
-		background-image: url('/overlapping-circles.svg');
-		background-repeat: repeat;
-		z-index: -1;
-		animation: move 5s infinite linear;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-image: url('https://media.discordapp.net/attachments/977225694780211241/1048831959440314438/B0363F1C-F28E-4C6A-92DD-C00BAB91F862.gif');
 	}
 </style>
