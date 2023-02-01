@@ -17,7 +17,7 @@
 		{
 			name: 'Osu',
 			tooltip: 'ciru',
-			url: 'https://osu.ppy.sh/users/12904237',
+			url: 'https://osu.ppy.sh/users/6114695',
 			class: 'fa-solid fa-circle',
       color: '#ff66aa'
 		},
