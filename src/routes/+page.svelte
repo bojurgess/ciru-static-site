@@ -12,7 +12,7 @@
 	}
 
 	const fa = 'fa-xl';
-	const linksClass = 'h-12 w-12 tooltip tooltip-bottom p-4 w-full flex items-center justify-center rounded-2xl m-1 shadow-2xl';
+	const linksClass = 'h-12 w-12 sm:h-12 sm:w-16 tooltip tooltip-bottom p-4 flex items-center justify-center rounded-2xl m-1 shadow-2xl';
 	const links: Links[] = [
 		{
 			name: 'Osu',
@@ -48,6 +48,13 @@
       class: 'fa-brands fa-youtube',
       color: '#ff0000'
     },
+    {
+      name: 'AniList',
+      tooltip: '/ciruu',
+      url: 'https://anilist.co/user/ciruu/',
+      class: 'fa-brands fa-anilist',
+      color: '#0a1625'
+    }
 	];
 
 	const handleClick = () => {
@@ -93,6 +100,15 @@
             style="background-color: {link.color};"
           >
             <img src='/osulogo.png' class="max-w-[32px]" alt="osu-logo">
+          </a>
+        {:else if link.name === 'AniList'}
+          <a
+            href={link.url}
+            class='{linksClass}'
+            data-tip={link.tooltip}
+            style="background-color: {link.color};"
+          >
+            <img src='/anilist.png' class="max-w-[32px]" alt="anilist-logo">
           </a>
         {:else}
           <a
