@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Ciru</title>
+	<title>ciru</title>
 </svelte:head>
 
 <script lang="ts">
