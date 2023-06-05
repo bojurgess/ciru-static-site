@@ -36,8 +36,8 @@
 		},
     {
       name: 'Twitch',
-      tooltip: 'ciruos',
-      url: 'https://twitch.tv/ciruos',
+      tooltip: 'ciruosu',
+      url: 'https://twitch.tv/ciruosu',
       class: 'fa-brands fa-twitch',
       color: '#9146ff'
     },
