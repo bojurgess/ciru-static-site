@@ -23,7 +23,7 @@
 		},
 		{
 			name: 'Discord',
-			tooltip: 'ciru#0001',
+			tooltip: 'ciru',
 			class: 'fa-brands fa-discord',
 			color: '#7289da'
 		},
