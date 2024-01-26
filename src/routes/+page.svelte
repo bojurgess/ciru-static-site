@@ -78,7 +78,7 @@
   <span class="flex flex-col w-full">
     <section class="ml-auto mr-auto text-center sm:text-start sm:ml-4 mb-1">
       <h1 class="text-5xl font-bold shadow-text">ciru</h1>
-      <h2 class="sm:truncate shadow-text">top 20 osu player.</h2>
+      <h2 class="sm:truncate shadow-text">top osu player.</h2>
     </section>
     <section class="flex justify-center min-w-[300px] w-full max-w-[600px]">
       {#each links as link}
