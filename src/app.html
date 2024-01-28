@@ -6,16 +6,16 @@
 		<link rel="icon" href="https://a.ppy.sh/6114695" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="author" content="ciru" />
-		<meta name="description" content="top 20 osu player." />
+		<meta name="description" content="top osu player." />
 		<meta content="Ciru" property="og:title" />
-		<meta content="top 20 osu player." property="og:description" />
+		<meta content="top osu player." property="og:description" />
 		<meta property="og:url" content="https://ciru.lol" />
 		<meta property="og:image" content="https://a.ppy.sh/6114695" />
 		<meta property="og:type" content="website" />
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
+		<div style="display: contents" class="h-full overflow-hidden flex">%sveltekit.body%</div>
 	</body>
 </html>
 
@@ -23,10 +23,11 @@
 	body {
 		display: flex;
 		justify-content: center;
-		height: 100vh;
+		height: 100%;
 		width: 100%;
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-image: url('/moshed.png');
+		background-image: url('https://cdn.ciru.lol/topography.svg');
+		background-color: #080808;
 	}
 </style>
