@@ -1,6 +1,5 @@
 <script lang="ts">
   import { links } from '$lib/links';
-	const fa = 'fa-xl';
 	const linksClass =
 		'h-12 w-12 sm:h-12 sm:w-16 tooltip tooltip-bottom sm:p-4 flex items-center justify-center rounded-2xl m-1 shadow-2xl';
 
@@ -32,7 +31,17 @@
 		</section>
 		<section class="flex justify-center min-w-[300px] w-full max-w-[600px]">
 			{#each links as link}
-				{#if link.name === 'Discord'}
+				{#if link.name === 'Cavoeboy'}
+					<a
+						href={link.url}
+						target="_blank"
+						class={linksClass}
+						data-tip={link.tooltip}
+						style="background-color: {link.color};"
+					>
+						<img src='/cavoeboy.png' class="max-w-[24px]" alt="{link.name} logo" />
+					</a>
+				{:else if link.name === 'Discord'}
 					<button
 						id="discord"
 						on:click={handleClick}
@@ -40,11 +49,12 @@
 						data-tip={link.tooltip}
 						style="background-color: {link.color};"
 					>
-          <img src='https://cdn.simpleicons.org/{link.name}/fff' class="max-w-[24px]" alt="{link.name} logo" />
+          					<img src='https://cdn.simpleicons.org/{link.name}/fff' class="max-w-[24px]" alt="{link.name} logo" />
 					</button>
 				{:else}
 					<a
 						href={link.url}
+						target="_blank"
 						class={linksClass}
 						data-tip={link.tooltip}
 						style="background-color: {link.color};"

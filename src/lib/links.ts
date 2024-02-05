@@ -7,6 +7,12 @@ export const links = [
 		color: '#ff66aa'
 	},
 	{
+		name: 'Cavoeboy',
+		tooltip: 'ciru',
+		url: 'https://cavoeboy.com/a/ciru',
+		color: '#12120d'
+	},
+	{
 		name: 'Discord',
 		tooltip: 'ciru',
 		class: 'fa-brands fa-discord',
