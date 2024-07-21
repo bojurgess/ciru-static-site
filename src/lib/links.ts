@@ -19,11 +19,11 @@ export const links = [
 		color: '#7289da'
 	},
 	{
-		name: 'Twitter',
+		name: 'X',
 		tooltip: '@ciru_osu',
 		url: 'https://twitter.com/ciru_osu',
 		class: 'fa-brands fa-twitter',
-		color: '#1da1f2'
+		color: '#000'
 	},
 	{
 		name: 'Twitch',
