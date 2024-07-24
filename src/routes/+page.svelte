@@ -1,74 +1,37 @@
 <script lang="ts">
-  import { links } from '$lib/links';
-	const linksClass =
-		'h-12 w-12 sm:h-12 sm:w-16 tooltip tooltip-bottom sm:p-4 flex items-center justify-center rounded-2xl m-1 shadow-2xl';
+	import Link from '$lib/components/Link.svelte';
+	import type { Link as TLink } from '../types';
 
-	const handleClick = () => {
-    navigator.clipboard.writeText(links[1].tooltip);
+	interface Props {
+		data: { links: TLink[] };
+		form: unknown;
+	}
 
-		const tooltip: any = document.querySelector('#discord');
-		tooltip.setAttribute('data-tip', 'Copied to clipboard!');
-		setTimeout(() => {
-			tooltip.setAttribute('data-tip', links[1].tooltip);
-		}, 1000);
-	};
+	let { data, form }: Props = $props();
+	let { links } = data;
 </script>
 
-<svelte:head>
-	<title>ciru</title>
-</svelte:head>
-
-<div class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 items-center text-white z-0">
-	<img
-		src="https://a.ppy.sh/6114695"
-		class="rounded-full w-48 sm:mr-4 shadow-2xl"
-		alt="profile-pic"
-	/>
-	<span class="flex flex-col w-full space-y-2">
-		<section class="text-center sm:text-left sm:ml-2">
-			<h1 class="text-5xl font-bold shadow-text">ciru</h1>
-			<h2 class="sm:truncate shadow-text">top osu player.</h2>
-		</section>
-		<section class="flex justify-center min-w-[300px] w-full max-w-[600px]">
-			{#each links as link}
-				{#if link.name === 'Cavoeboy'}
-					<a
-						href={link.url}
-						target="_blank"
-						class={linksClass}
-						data-tip={link.tooltip}
-						style="background-color: {link.color};"
-					>
-						<img src='/cavoeboy.png' class="max-w-[24px]" alt="{link.name} logo" />
-					</a>
-				{:else if link.name === 'Discord'}
-					<button
-						id="discord"
-						on:click={handleClick}
-						class={linksClass}
-						data-tip={link.tooltip}
-						style="background-color: {link.color};"
-					>
-          					<img src='https://cdn.simpleicons.org/{link.name}/fff' class="max-w-[24px]" alt="{link.name} logo" />
-					</button>
-				{:else}
-					<a
-						href={link.url}
-						target="_blank"
-						class={linksClass}
-						data-tip={link.tooltip}
-						style="background-color: {link.color};"
-					>
-						<img src='https://cdn.simpleicons.org/{link.name}/fff' class="max-w-[24px]" alt="{link.name} logo" />
-					</a>
-				{/if}
+<main
+	class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4"
+>
+	<section>
+		<img class="rounded-full" src="https://a.ppy.sh/6114695" alt="avatar" />
+	</section>
+	<section class="space-y-4 text-white">
+		<div id="header" class="text-center md:text-start">
+			<h1 class="text-7xl">ciru</h1>
+			<p class="pl-1">top osu player.</p>
+		</div>
+		<div class="space-x-1 flex">
+			{#each links as l (l.id)}
+				<Link link={l} />
 			{/each}
-		</section>
-	</span>
-</div>
+		</div>
+	</section>
+</main>
 
 <style>
-	.shadow-text {
-		text-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+	#header {
+		line-height: 0.5em;
 	}
 </style>
